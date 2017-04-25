@@ -242,27 +242,30 @@
           border: 2px solid #5F98CD;
           box-shadow: 0 0 0 3px #fff;*/
 
-    .footer {
-      position: relative;
-      background: #FFFFFF;
-      margin: auto;
-      height: 30px;
-      border-top: 1px solid #eee;
-      width: 100%;
-      border-radius: 10px;
-    }
+  .footer {
+    position: relative;
+    background: #FFFFFF;
+    margin: auto;
+    height: 30px;
+    border-top: 1px solid #eee;
+    width: 100%;
+    border-radius: 10px;
+  }
 
-      .footer button {
-        background: #eee;
-        position: absolute;
-        width: 100%;
-        right: 0px;
-        left: 0px;
-        top: 0px;
-        bottom: 0px;
-        border: 0;
-      }
-        .footer button i {
-          margin: 0 10px;
-        }
+  .footer button {
+  background: #eee;
+  width: 100%;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  border: 0;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  .footer button i {
+  margin: 0 10px;
+}
       

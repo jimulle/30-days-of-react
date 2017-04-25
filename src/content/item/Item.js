@@ -6,12 +6,12 @@ class Item extends Component {
         return (
             <div className="item">
                 <div className="avatar">
-                    <img src={ activity.user.avatar } alt={ activity.user.name } />
-                    { activity.user.name }
+                    <img src={ activity.actor.avatar_url } alt={ activity.actor.display_login } />
+                    { activity.actor.display_login }
                 </div>
-                <span className="time">{ activity.timestamp }</span>
-                <p>{ activity.text }</p>
-                <div className="commentCount">{ activity.comments.length }</div>
+                <span className="time">{ activity.created_at }</span>
+                <p>{ activity.type }</p>
+                <p>{ activity.repo.name }</p>
             </div>
         )
     }

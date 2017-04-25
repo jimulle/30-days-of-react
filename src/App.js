@@ -3,37 +3,43 @@ import Header from './header/Header';
 import Content from './content/Content';
 import './App.css';
 
-const activities = [
-    {
-        id: '0001',
-        timestamp: new Date().getTime(),
-        text: 'Ate lunch',
-        user: {
-            id: 1, name: 'Mr. T',
-            avatar: 'http://findicons.com/files/icons/1072/face_avatars/300/j01.png'
-        },
-        comments: [{ from: 'Ari', text: 'Me too!' }]
-    },
-    {
-        id: '0002',
-        timestamp: new Date().getTime(),
-        text: 'Pittied a fool',
-        user: {
-            id: 1, name: 'Mr. T',
-            avatar: 'http://findicons.com/files/icons/1072/face_avatars/300/j01.png'
-        },
-        comments: [{ from: 'Face', text: 'hahahahahahahaha!' }]
-    }
-];
+// An async request
+const data = require('./data.json');
+const fetchEvents = () => Promise.resolve(data)
+                      .then(json => json.slice(0, 4))
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = { refreshing: false };
+    }
+
+    refresh() {
+        this.setState({ refreshing: true });
+    }
+
+    onComponentRefresh() {
+        this.setState({ refreshing: false });
+    }
+
     render() {
+        const { refreshing } = this.state;
         return (
             <div className="notificationsFrame">
                 <div className="panel">
                     { /* content goes here */ }
-                    <Header title="Timeline" />
-                    <Content activities={ activities }/>
+                    <Header title="Github Activity" />
+                    <Content
+                        onComponentRefresh={ this.onComponentRefresh.bind(this) }
+                        requestRefresh={ refreshing }
+                        fetchData={ fetchEvents } />
+                    <div className="footer">
+                        <button onClick={ this.refresh.bind(this) }>
+                            <i className="fa fa-refresh" />
+                            Refresh
+                        </button>
+                    </div>
                 </div>
             </div>
         )
