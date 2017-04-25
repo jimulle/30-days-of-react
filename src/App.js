@@ -5,6 +5,7 @@ import './App.css';
 
 const activities = [
     {
+        id: '0001',
         timestamp: new Date().getTime(),
         text: 'Ate lunch',
         user: {
@@ -14,6 +15,7 @@ const activities = [
         comments: [{ from: 'Ari', text: 'Me too!' }]
     },
     {
+        id: '0002',
         timestamp: new Date().getTime(),
         text: 'Pittied a fool',
         user: {

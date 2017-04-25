@@ -32,6 +32,10 @@
       opacity: 0;
       pointer-events: none;
     }
+
+    .notificationsFrame .searchInput.active {
+      opacity: 1;
+    }
       .notificationsFrame .show-menu:focus {
         outline: none;
       }

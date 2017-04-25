@@ -9,7 +9,7 @@ class Content extends Component {
                 <div className="line"></div>
             { /* timeline item */ }
                 { activities.map((activity) => {
-                        return (<Item activity={ activity } />)
+                        return (<Item activity={ activity } key={ activity.id } />)
                 })}
             </div>
         )
