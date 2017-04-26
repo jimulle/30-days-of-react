@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Item from './item/Item';
 
-const data = require('../data.json').slice(0, 8);
+const data = require('../data.json').slice(0, 20);
+
 
 class Content extends Component {
     constructor(props) {
@@ -9,35 +10,44 @@ class Content extends Component {
 
         this.state = {
             loading: false,
-            activities: []
+            searchFilter: '',
+            activities: [],
+            filteredActivities: []
         };
     }
 
     componentDidMount() {
-        this.updateData();
+        this.setState({
+            activities: data,
+            filteredActivities: data
+        }, this.updateData);
     }
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.requestRefresh && nextProps.requestRefresh !== this.props.requestRefresh) {
-            this.setState({ loading: true }, this.updateData);
+            this.setState({ loading: true, searchFilter: nextProps.searchFilter }, this.updateData);
         }
     }
 
     updateData() {
+        const { activities, searchFilter } = this.state;
+        const filter = (e => searchFilter === '' || e.actor.login.match(new RegExp(searchFilter)));
+        let json = activities.filter(filter);
         this.setState({
-            loading: false,
-            activities: data.sort(() => 0.5 - Math.random()).slice(0, 4)
+            filteredActivities: json,
+            loading: false
         }, this.props.onComponentRefresh);
+        return json;
     }
 
     render() {
-        const { loading, activities } = this.state;
+        const { loading, filteredActivities } = this.state;
         return (
             <div className="content">
                 <div className="line"></div>
                 { loading && <div>Loading</div> }
                 { /* timeline item */ }
-                { activities.map((activity) => {
+                { filteredActivities.map((activity) => {
                         return (<Item activity={ activity } key={ activity.id } />)
                 })}
             </div>
