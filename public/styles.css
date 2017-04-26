@@ -1,0 +1,6 @@
+#header {
+    background: rgba(251, 202, 43, 1);
+}
+#header .fa, #header .title, #header .searchIcon {
+    color: #333333;
+}

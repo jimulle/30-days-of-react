@@ -19,9 +19,11 @@ class Header extends Component {
         if (this.state.searchVisible) {
             searchInputClasses.push('active');
         }
+        const menuIconStyle = { color: '#333333' };
+        const headerInlineStyles = { borderBottom: '3px solid #333333' };
         return (
-            <div className="header">
-                <div className="fa fa-bars menuIcon"></div>
+            <div className="header" id="header" style={ headerInlineStyles }>
+                <div className="fa fa-bars menuIcon" style={ menuIconStyle }></div>
                 <span className="title">{ this.props.title }</span>
                 <input
                     type="text"
