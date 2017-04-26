@@ -33,4 +33,12 @@ class Header extends Component {
     }
 }
 
+Header.propTypes = {
+    title: React.PropTypes.string
+};
+
+Header.defaultProps = {
+    title: 'Github activity'
+};
+
 export default Header;
